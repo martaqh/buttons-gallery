@@ -1,9 +1,11 @@
 <script setup lang="ts">
-import TheButton from "@/components/TheButton.vue";
+defineProps<{
+  text?: string;
+}>();
 </script>
 
 <template>
-  <TheButton text="Hey" />
+  <component>{{ text }} </component>
 </template>
 
 <style scoped></style>
