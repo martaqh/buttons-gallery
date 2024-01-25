@@ -2,25 +2,26 @@
 import { computed } from "vue";
 
 type Size = "small" | "regular" | "large";
-type Variant = "filled" | "outlined";
 type Color = "orange" | "green" | "dark-green" | "red" | "yellow";
 
 interface Props {
   to?: string;
   href?: string;
-  size: Size;
-  color: Color;
+  size?: Size;
+  color?: Color;
   outlined?: boolean;
   disabled?: boolean;
+  fullWidth?: boolean;
 }
 
 const props = withDefaults(defineProps<Props>(), {
   size: "regular",
-  variant: "filled",
   color: "yellow",
 });
 
-const buttonType = computed(() => {
+const emit = defineEmits(["display-changed"]);
+
+const componentVariant = computed(() => {
   if (props.to) {
     return "router-link";
   } else if (props.href) {
@@ -43,18 +44,35 @@ const buttonSize = computed(() => {
 const textColor = computed(() => {
   return props.color === "yellow" ? "dark-green" : "white";
 });
+
+const handleEmit = () => {
+  if (props.fullWidth) {
+    emit("display-changed");
+  }
+  return;
+};
+
+handleEmit();
 </script>
 
 <template>
   <component
     class="base-button"
-    :is="buttonType"
+    :is="componentVariant"
     :href="!disabled ? href : null"
     :to="to"
+    :type="!href && !to ? 'button' : null"
     :disabled="disabled"
-    :class="{ disabled: disabled, outlined: outlined, [size]: size }"
+    :class="{
+      disabled: disabled,
+      outlined: outlined,
+      [size]: size,
+      'full-width': fullWidth,
+    }"
   >
-    <slot> Text </slot>
+    <div class="base-button__slot">
+      <slot> Text </slot>
+    </div>
   </component>
 </template>
 
@@ -83,7 +101,7 @@ const textColor = computed(() => {
 
 .outlined {
   background-color: var(--white);
-  border: 1px solid var(--dark-green);
+  outline: 1px solid var(--dark-green);
   color: var(--dark-green);
 
   &:hover {
@@ -122,5 +140,27 @@ const textColor = computed(() => {
   line-height: 135%;
   letter-spacing: -0.54px;
   border-radius: 28px;
+}
+
+.full-width {
+  width: 100%;
+}
+
+.base-button__slot {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  max-height: 24px;
+  white-space: nowrap;
+
+  .small & {
+    max-height: 20px;
+    gap: 4px;
+  }
+
+  .large & {
+    gap: 10px;
+  }
 }
 </style>
