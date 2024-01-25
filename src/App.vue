@@ -5,10 +5,15 @@ import BaseButton from "@/components/BaseButton.vue";
 <template>
   <main class="app">
     <div class="app__buttons-container">
-      <BaseButton color="orange"> </BaseButton>
-      <BaseButton href="http://www.risify.pl" color="green" disabled>
+      <BaseButton color="yellow" size="small"> </BaseButton>
+      <BaseButton
+        href="http://www.risify.pl"
+        color="green"
+        size="large"
+        disabled
+      >
       </BaseButton>
-      <BaseButton to="About" outlined disabled> </BaseButton>
+      <BaseButton to="About" color="red"> </BaseButton>
     </div>
   </main>
 </template>

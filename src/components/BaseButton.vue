@@ -52,7 +52,7 @@ const textColor = computed(() => {
     :href="!disabled ? href : null"
     :to="to"
     :disabled="disabled"
-    :class="{ disabled: disabled, outlined: outlined }"
+    :class="{ disabled: disabled, outlined: outlined, [size]: size }"
   >
     <slot> Text </slot>
   </component>
@@ -60,7 +60,7 @@ const textColor = computed(() => {
 
 <style scoped>
 .base-button {
-  padding: 16px 24px;
+  padding: 14px 24px;
   height: fit-content;
   border-radius: 24px;
   background-color: v-bind("`var(--${color})`");
@@ -104,5 +104,23 @@ const textColor = computed(() => {
   &:hover {
     background-color: white;
   }
+}
+
+.small {
+  padding: 10px 16px;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 140%;
+  letter-spacing: -0.42px;
+  border-radius: 20px;
+}
+
+.large {
+  padding: 16px 24px;
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 135%;
+  letter-spacing: -0.54px;
+  border-radius: 28px;
 }
 </style>
