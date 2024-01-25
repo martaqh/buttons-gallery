@@ -9,8 +9,8 @@ interface Props {
   to?: string;
   href?: string;
   size: Size;
-  variant: Variant;
   color: Color;
+  outlined?: boolean;
   disabled?: boolean;
 }
 
@@ -52,15 +52,15 @@ const textColor = computed(() => {
     :href="!disabled ? href : null"
     :to="to"
     :disabled="disabled"
-    :class="{ disabled: disabled }"
+    :class="{ disabled: disabled, outlined: outlined }"
   >
-    <slot class="slot"> Click me </slot>
+    <slot> Text </slot>
   </component>
 </template>
 
 <style scoped>
 .base-button {
-  padding: 24px 14px;
+  padding: 16px 24px;
   height: fit-content;
   border-radius: 24px;
   background-color: v-bind("`var(--${color})`");
@@ -82,11 +82,30 @@ const textColor = computed(() => {
 }
 
 .disabled {
-  background-color: var(--disabled);
+  background-color: var(--grey-disabled);
 
   &:hover {
-    background-color: var(--disabled);
+    background-color: var(--grey-disabled);
     cursor: not-allowed;
+  }
+}
+
+.outlined {
+  background-color: var(--white);
+  border: 1px solid var(--dark-green);
+  color: var(--dark-green);
+
+  &:hover {
+    background-color: var(--light-green);
+  }
+}
+
+.outlined.disabled {
+  border: 1px solid var(--grey-disabled);
+  color: var(--grey-disabled);
+
+  &:hover {
+    background-color: var(--white);
   }
 }
 </style>

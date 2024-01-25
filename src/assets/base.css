@@ -8,12 +8,12 @@
   --green-hover: #3dc696;
   --dark-green: #113a29;
   --dark-green-hover: #235840;
-  --green-light: #dcf5ee;
+  --light-green: #dcf5ee;
   --red: #f55555;
   --red-hover: #fc6d6d;
   --yellow: #ffbf52;
   --yellow-hover: #ffd788;
-  --disabled: #dfe0df;
+  --grey-disabled: #dfe0df;
 }
 
 *,
