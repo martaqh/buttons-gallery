@@ -13,6 +13,7 @@
   --red-hover: #fc6d6d;
   --yellow: #ffbf52;
   --yellow-hover: #ffd788;
+  --disabled: #dfe0df;
 }
 
 *,
@@ -20,4 +21,5 @@
 *::after {
   box-sizing: border-box;
   margin: 0;
+  background-color: #fce5cd;
 }

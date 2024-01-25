@@ -1,10 +1,15 @@
 <script setup lang="ts">
-import TheButton from "@/components/TheButton.vue";
+import BaseButton from "@/components/BaseButton.vue";
 </script>
 
 <template>
   <main class="app">
-    <TheButton href="http://www.risify.pl" color="dark-green"> </TheButton>
+    <div class="app__buttons-container">
+      <BaseButton color="dark-green"> </BaseButton>
+      <BaseButton href="http://www.risify.pl" color="green" disabled>
+      </BaseButton>
+      <BaseButton to="About" color="red"> </BaseButton>
+    </div>
   </main>
 </template>
 
@@ -19,5 +24,16 @@ import TheButton from "@/components/TheButton.vue";
   display: flex;
   justify-content: center;
   align-items: center;
+  border-radius: 24px;
+  background-color: white;
+}
+.app__buttons-container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 24px;
+  background-color: inherit;
 }
 </style>

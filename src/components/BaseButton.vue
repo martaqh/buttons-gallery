@@ -11,6 +11,7 @@ interface Props {
   size: Size;
   variant: Variant;
   color: Color;
+  disabled?: boolean;
 }
 
 const props = withDefaults(defineProps<Props>(), {
@@ -45,13 +46,20 @@ const textColor = computed(() => {
 </script>
 
 <template>
-  <component class="button" :is="buttonType" :href="href" :to="to">
+  <component
+    class="base-button"
+    :is="buttonType"
+    :href="!disabled ? href : null"
+    :to="to"
+    :disabled="disabled"
+    :class="{ disabled: disabled }"
+  >
     <slot class="slot"> Click me </slot>
   </component>
 </template>
 
 <style scoped>
-.button {
+.base-button {
   padding: 24px 14px;
   height: fit-content;
   border-radius: 24px;
@@ -66,13 +74,19 @@ const textColor = computed(() => {
 
   &:hover {
     background-color: v-bind("`var(--${color}-hover`");
+    cursor: pointer;
   }
   &:focus {
     border: 2px solid v-bind("`var(--${color}-hover`");
   }
 }
 
-.slot {
-  display: flex;
+.disabled {
+  background-color: var(--disabled);
+
+  &:hover {
+    background-color: var(--disabled);
+    cursor: not-allowed;
+  }
 }
 </style>
