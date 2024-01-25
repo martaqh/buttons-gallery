@@ -81,15 +81,6 @@ const textColor = computed(() => {
   }
 }
 
-.disabled {
-  background-color: var(--grey-disabled);
-
-  &:hover {
-    background-color: var(--grey-disabled);
-    cursor: not-allowed;
-  }
-}
-
 .outlined {
   background-color: var(--white);
   border: 1px solid var(--dark-green);
@@ -100,12 +91,18 @@ const textColor = computed(() => {
   }
 }
 
-.outlined.disabled {
-  border: 1px solid var(--grey-disabled);
-  color: var(--grey-disabled);
+.disabled {
+  opacity: 0.4;
 
   &:hover {
-    background-color: var(--white);
+    cursor: not-allowed;
+    background-color: v-bind("`var(--${color})`");
+  }
+}
+
+.outlined.disabled {
+  &:hover {
+    background-color: white;
   }
 }
 </style>
