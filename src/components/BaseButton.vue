@@ -19,10 +19,6 @@ const props = withDefaults(defineProps<Props>(), {
   color: "yellow",
 });
 
-const emit = defineEmits<{
-  (e: "display-block"): void;
-}>();
-
 const componentVariant = computed(() => {
   if (props.to) {
     return "router-link";
@@ -46,23 +42,6 @@ const buttonSize = computed(() => {
 const textColor = computed(() => {
   return props.color === "yellow" ? "dark-green" : "white";
 });
-
-const hasFullWidth = ref(props.fullWidth);
-
-const handleEmit = () => {
-  if (hasFullWidth.value) {
-    emit("display-block");
-  }
-  return;
-};
-
-watch(
-  hasFullWidth,
-  () => {
-    handleEmit();
-  },
-  { immediate: true }
-);
 </script>
 
 <template>

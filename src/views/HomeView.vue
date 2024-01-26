@@ -3,21 +3,12 @@ import { ref } from "vue";
 import BaseView from "./BaseView.vue";
 import BaseButton from "../components/BaseButton.vue";
 import ContentDisplay from "@/components/ContentDisplay.vue";
-
-const isDisplayBlock = ref(false);
-
-const handleDisplayChange = () => {
-  isDisplayBlock.value = true;
-};
 </script>
 
 <template>
   <BaseView class="home">
     <ContentDisplay>
-      <div
-        class="home__buttons-container"
-        :class="{ 'display-block': isDisplayBlock }"
-      >
+      <div class="home__buttons-container">
         <BaseButton color="yellow" size="small">
           I am an ordinary button
         </BaseButton>
@@ -25,7 +16,7 @@ const handleDisplayChange = () => {
           <i class="material-icons">rocket</i>
           Go somewhere outside
         </BaseButton>
-        <BaseButton to="/example" color="red" size="large">
+        <BaseButton to="/another" color="red" size="large">
           See some more buttons
           <i class="material-icons">forward</i>
         </BaseButton>
@@ -44,7 +35,8 @@ const handleDisplayChange = () => {
   gap: 24px;
   background-color: inherit;
 }
-.home__buttons-container.display-block {
+
+.home__buttons-container:has(.full-width) {
   flex-direction: column;
 }
 </style>
