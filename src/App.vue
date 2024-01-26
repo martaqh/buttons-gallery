@@ -19,7 +19,7 @@ const handleDisplayChange = () => {
         <BaseButton
           color="yellow"
           size="large"
-          @display-changed="handleDisplayChange"
+          @display-block="handleDisplayChange"
         >
           <i class="material-icons">key</i>
           Open me if you can
@@ -28,7 +28,7 @@ const handleDisplayChange = () => {
           href="http://www.risify.pl"
           color="green"
           full-width
-          @display-changed="handleDisplayChange"
+          @display-block="handleDisplayChange"
         >
           <i class="material-icons">home</i>
           Welcome home
@@ -37,7 +37,7 @@ const handleDisplayChange = () => {
           to="About"
           color="red"
           size="small"
-          @display-changed="handleDisplayChange"
+          @display-block="handleDisplayChange"
         >
           <i class="material-icons">refresh</i>
           Try again

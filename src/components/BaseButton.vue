@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed } from "vue";
+import { computed, ref, watch } from "vue";
 
 type Size = "small" | "regular" | "large";
 type Color = "orange" | "green" | "dark-green" | "red" | "yellow";
@@ -19,7 +19,9 @@ const props = withDefaults(defineProps<Props>(), {
   color: "yellow",
 });
 
-const emit = defineEmits(["display-changed"]);
+const emit = defineEmits<{
+  (e: "display-block"): void;
+}>();
 
 const componentVariant = computed(() => {
   if (props.to) {
@@ -45,14 +47,22 @@ const textColor = computed(() => {
   return props.color === "yellow" ? "dark-green" : "white";
 });
 
+const hasFullWidth = ref(props.fullWidth);
+
 const handleEmit = () => {
-  if (props.fullWidth) {
-    emit("display-changed");
+  if (hasFullWidth.value) {
+    emit("display-block");
   }
   return;
 };
 
-handleEmit();
+watch(
+  hasFullWidth,
+  () => {
+    handleEmit();
+  },
+  { immediate: true }
+);
 </script>
 
 <template>
