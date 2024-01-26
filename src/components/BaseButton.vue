@@ -69,7 +69,7 @@ watch(
   <component
     class="base-button"
     :is="componentVariant"
-    :href="!disabled ? href : null"
+    :href="href || to"
     :to="to"
     :type="!href && !to ? 'button' : null"
     :disabled="disabled"
@@ -95,7 +95,6 @@ watch(
   color: v-bind("`var(--${textColor})`");
   font-size: 16px;
   font-weight: 600;
-  font-family: Montserrat;
   line-height: 125%;
   letter-spacing: -0.48px;
   border: none;
@@ -121,11 +120,7 @@ watch(
 
 .disabled {
   opacity: 0.4;
-
-  &:hover {
-    cursor: not-allowed;
-    background-color: v-bind("`var(--${color})`");
-  }
+  pointer-events: none;
 }
 
 .outlined.disabled {
