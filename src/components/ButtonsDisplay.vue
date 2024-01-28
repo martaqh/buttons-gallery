@@ -1,6 +1,8 @@
 <template>
   <div class="buttons-display">
-    <h1 class="buttons-display__title"><slot name="title"></slot></h1>
+    <h1 class="buttons-display__title">
+      <slot name="title"></slot>
+    </h1>
     <div class="buttons-display__content">
       <slot name="content"></slot>
     </div>
@@ -36,11 +38,11 @@
 .buttons-display__content {
   width: 100%;
   height: 100%;
+  background-color: inherit;
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 24px;
-  background-color: inherit;
 }
 
 .buttons-display__content:has(.full-width) {

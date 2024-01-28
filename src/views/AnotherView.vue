@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import ButtonsDisplay from "@/components/ButtonsDisplay.vue";
-import BaseView from "./BaseView.vue";
 import BaseButton from "@/components/BaseButton.vue";
+import ButtonsDisplay from "@/components/ButtonsDisplay.vue";
+import BaseView from "@/views/BaseView.vue";
 </script>
 
 <template>

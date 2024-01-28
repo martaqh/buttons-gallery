@@ -1,20 +1,18 @@
 <script setup lang="ts">
-import BaseView from "./BaseView.vue";
-import BaseButton from "../components/BaseButton.vue";
+import BaseButton from "@/components/BaseButton.vue";
 import ButtonsDisplay from "@/components/ButtonsDisplay.vue";
+import BaseView from "@/views/BaseView.vue";
 </script>
 
 <template>
-  <BaseView class="home">
+  <BaseView class="home-view">
     <ButtonsDisplay>
       <template #title>
         Welcome to a humble buttons gallery. <br />
         Feel free to click any exhibit!
       </template>
       <template #content>
-        <BaseButton color="yellow" size="small">
-          Click to see me focused
-        </BaseButton>
+        <BaseButton size="small"> Click to see me focused </BaseButton>
         <BaseButton href="http://www.risify.pl" color="green">
           <i class="material-icons">rocket_launch</i>
           Go somewhere outside

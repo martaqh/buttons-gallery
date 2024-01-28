@@ -1,14 +1,16 @@
 <script setup lang="ts">
-import { computed, ref, watch } from "vue";
+import { computed } from "vue";
 
 type Size = "small" | "regular" | "large";
 type Color = "orange" | "green" | "dark-green" | "red" | "yellow";
+type ButtonType = "button" | "submit" | "reset";
 
 interface Props {
   to?: string;
   href?: string;
   size?: Size;
   color?: Color;
+  type: ButtonType;
   outlined?: boolean;
   disabled?: boolean;
   fullWidth?: boolean;
@@ -17,6 +19,7 @@ interface Props {
 const props = withDefaults(defineProps<Props>(), {
   size: "regular",
   color: "yellow",
+  type: "button",
 });
 
 const componentVariant = computed(() => {
@@ -29,14 +32,8 @@ const componentVariant = computed(() => {
   }
 });
 
-const buttonSize = computed(() => {
-  if (props.to) {
-    return "router-link";
-  } else if (props.href) {
-    return "a";
-  } else {
-    return "button";
-  }
+const buttonType = computed(() => {
+  return !props.href && !props.to ? props.type : null;
 });
 
 const textColor = computed(() => {
@@ -54,7 +51,7 @@ const focusColor = computed(() => {
     :is="componentVariant"
     :href="href || to"
     :to="to"
-    :type="!href && !to ? 'button' : null"
+    :type="buttonType"
     :disabled="disabled"
     :class="{
       disabled: disabled,
@@ -64,7 +61,10 @@ const focusColor = computed(() => {
     }"
   >
     <div class="base-button__slot">
-      <slot> Text </slot>
+      <slot>
+        <!-- fallback content -->
+        Click me
+      </slot>
     </div>
   </component>
 </template>
@@ -103,12 +103,6 @@ const focusColor = computed(() => {
 .disabled {
   opacity: 0.4;
   pointer-events: none;
-}
-
-.outlined.disabled {
-  &:hover {
-    background-color: white;
-  }
 }
 
 .small {
