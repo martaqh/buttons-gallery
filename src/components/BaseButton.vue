@@ -42,6 +42,10 @@ const buttonSize = computed(() => {
 const textColor = computed(() => {
   return props.color === "yellow" ? "dark-green" : "white";
 });
+
+const focusColor = computed(() => {
+  return props.outlined ? "dark-green" : props.color;
+});
 </script>
 
 <template>
@@ -68,7 +72,6 @@ const textColor = computed(() => {
 <style scoped>
 .base-button {
   padding: 14px 24px;
-  height: fit-content;
   border-radius: 24px;
   background-color: v-bind("`var(--${color})`");
   color: v-bind("`var(--${textColor})`");
@@ -83,7 +86,7 @@ const textColor = computed(() => {
     cursor: pointer;
   }
   &:focus {
-    border: 2px solid v-bind("`var(--${color}-hover`");
+    outline: 2px solid v-bind("`var(--${focusColor}`");
   }
 }
 
@@ -144,7 +147,12 @@ const textColor = computed(() => {
   }
 
   .large & {
+    max-height: 56px;
     gap: 10px;
   }
+}
+
+.base-button__slot i {
+  max-height: 100%;
 }
 </style>

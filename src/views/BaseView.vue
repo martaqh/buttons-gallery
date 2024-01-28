@@ -17,7 +17,7 @@
 }
 .base-view {
   height: 100vh;
-  background-color: var(--color-background);
+  background-image: var(--background-gradient);
   animation: transitionIn 1.5s;
 }
 </style>

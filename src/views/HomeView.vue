@@ -1,42 +1,32 @@
 <script setup lang="ts">
-import { ref } from "vue";
 import BaseView from "./BaseView.vue";
 import BaseButton from "../components/BaseButton.vue";
-import ContentDisplay from "@/components/ContentDisplay.vue";
+import ButtonsDisplay from "@/components/ButtonsDisplay.vue";
 </script>
 
 <template>
   <BaseView class="home">
-    <ContentDisplay>
-      <div class="home__buttons-container">
+    <ButtonsDisplay>
+      <template #title>
+        Welcome to the buttons gallery. Feel free to click anything!
+      </template>
+      <template #content>
         <BaseButton color="yellow" size="small">
-          I am an ordinary button
+          <i class="material-icons">rocket</i>
+          Click me
         </BaseButton>
-        <BaseButton href="http://www.risify.pl" color="green" outlined>
+        <BaseButton href="http://www.risify.pl" color="green">
           <i class="material-icons">rocket</i>
           Go somewhere outside
         </BaseButton>
         <BaseButton to="/another" color="red" size="large">
-          See some more buttons
+          <i class="material-icons">rocket</i>
+          See more buttons
           <i class="material-icons">forward</i>
         </BaseButton>
-      </div>
-    </ContentDisplay>
+      </template>
+    </ButtonsDisplay>
   </BaseView>
 </template>
 
-<style scoped>
-.home__buttons-container {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 24px;
-  background-color: inherit;
-}
-
-.home__buttons-container:has(.full-width) {
-  flex-direction: column;
-}
-</style>
+<style scoped></style>
