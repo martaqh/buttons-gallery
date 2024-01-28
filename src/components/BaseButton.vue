@@ -138,21 +138,16 @@ const focusColor = computed(() => {
   align-items: center;
   justify-content: center;
   gap: 8px;
-  max-height: 24px;
+  height: 20px;
   white-space: nowrap;
 
   .small & {
-    max-height: 20px;
     gap: 4px;
   }
 
   .large & {
-    max-height: 56px;
     gap: 10px;
+    height: 24px;
   }
-}
-
-.base-button__slot i {
-  max-height: 100%;
 }
 </style>

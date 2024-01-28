@@ -8,19 +8,18 @@ import ButtonsDisplay from "@/components/ButtonsDisplay.vue";
   <BaseView class="home">
     <ButtonsDisplay>
       <template #title>
-        Welcome to the buttons gallery. Feel free to click anything!
+        Welcome to a humble buttons gallery. <br />
+        Feel free to click any exhibit!
       </template>
       <template #content>
         <BaseButton color="yellow" size="small">
-          <i class="material-icons">rocket</i>
-          Click me
+          Click to see me focused
         </BaseButton>
         <BaseButton href="http://www.risify.pl" color="green">
-          <i class="material-icons">rocket</i>
+          <i class="material-icons">rocket_launch</i>
           Go somewhere outside
         </BaseButton>
         <BaseButton to="/another" color="red" size="large">
-          <i class="material-icons">rocket</i>
           See more buttons
           <i class="material-icons">forward</i>
         </BaseButton>

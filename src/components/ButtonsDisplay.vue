@@ -16,6 +16,7 @@
   inset: 0px;
   height: fit-content;
   width: fit-content;
+  min-width: 50vw;
   border-radius: 24px;
   display: flex;
   flex-direction: column;
@@ -27,6 +28,9 @@
 .buttons-display__title {
   font-size: 20px;
   font-weight: 600;
+  line-height: 150%;
+  text-align: center;
+  opacity: 0.8;
 }
 
 .buttons-display__content {
