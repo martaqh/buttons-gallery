@@ -15,7 +15,7 @@ import BaseView from "@/views/BaseView.vue";
         <BaseButton size="small"> Click to see me focused </BaseButton>
         <BaseButton href="http://www.risify.pl" color="green">
           <i class="material-icons">rocket_launch</i>
-          Go somewhere outside
+          Go to outer spaces
         </BaseButton>
         <BaseButton to="/another" color="red" size="large">
           See more buttons
